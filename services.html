@@ -7,18 +7,144 @@
     <style>
         body {
           font-family: Garamond, serif;
+         
+        }
+
+        .pricing-section {
+          text-align: center;
+          padding: 50px 20px;
+        }
+
+        .pricing-title{
+          font-size: 35px;
+          margin-bottom: 10px;
+        }
+
+        .pricing-subtutle{
+          font-size: 18px;
+          margin-bottom: 40px;
+        }
+
+        .pricing-container{
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .pricing-box{
+           background-color: #B1ABAA;
+            width: 280px;
+            margin: 15px;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            color: rgb(0, 0, 0);
+        }
+
+         .pricing-box h3 {
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        .price {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .pricing-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pricing-box ul li {
+            margin: 10px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #55504E;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        footer {
+            background-color: #55504E;
+            padding: 20px;
+            color: white;
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
         }
         </style>
 </head>
 <body>
    
-    <h3 style="background-color: #48d1CC; color: white;">
+    <h3 style=" color: black;">
         FitPlan
-        <a href="Home.html" style="color: white; display: inline-block; text-align: right; padding-left: 1100px;">Home</a>
-        <a href="About.html" style="color: white; display: inline-block; text-align: right; padding-left: 20px;">About</a>
-        <a href="Services.html" style="color: white; display: inline-block; text-align: right; padding-left: 20px;">Services</a>
-        <a href="Contact.html" style="color: white; display: inline-block; text-align: right; padding-left: 20px;">Contact</a>
+        <a href="Home.html"
+            style="color: black; display: inline-block; text-align: right; padding-left: 1100px;">Home</a>
+        <a href="About.html"
+            style="color: black; display: inline-block; text-align: right; padding-left: 20px;">About</a>
+        <a href="Services.html"
+            style="color: black; display: inline-block; text-align: right; padding-left: 20px;">Services</a>
+        <a href="Contact.html"
+            style="color: black; display: inline-block; text-align: right; padding-left: 20px;">Contact</a>
     </h3>
+    <section class="pricing-section">
+        <h1 class="pricing-title">Our Pricing Plan</h1>
+        <p class="pricing-subtitle">Choose the plan that matches your goals</p>
+
+        <div class="pricing-container">
+
+            <div class="pricing-box">
+                <h3>Basic</h3>
+                <p class="price">$50 / month</p>
+                <ul>
+                    <li>6 days a Week</li>
+                    <li>Dedicated trainer Alocated</li>
+                    <li>Diet Plan Included</li>
+                </ul>
+                <a href="#" class="btn">Join Now</a>
+            </div>
+
+            <div class="pricing-box" style="background-color:#C7C3C2;">
+                <h3>Standard</h3>
+                <p class="price">$75 / month</p>
+                <ul>
+                    <li>All Basic Features</li>
+                    <li>Personalized Meal Plan</li>
+                    <li>Fitness Tracking Tools</li>
+                    <li>Community Access</li>
+                </ul>
+                <a href="#" class="btn">Join Now</a>
+            </div>
+
+            <div class="pricing-box" style="background-color:#9B9492;">
+                <h3>Premium</h3>
+                <p class="price">$125 / month</p>
+                <ul>
+                    <li>All Standard Features</li>
+                    <li>1-on-1 Coaching</li>
+                    <li>Weekly Progress Check</li>
+                    <li>Exclusive Recipes</li>
+                    <li>Morning & Evening Batches</li>
+                </ul>
+                <a href="#" class="btn">Join Now</a>
+            </div>
+        </div>
+    </section>
 
         <br><br><br><br>
 <section style="background-color: #9B9492; padding: 10px; margin-top: 100px;">
