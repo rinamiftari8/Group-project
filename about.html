@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FirPlan</title>
+    <title>FitPlan</title>
     <style>
         body {
             font-family: Garamond, serif;
@@ -14,17 +14,146 @@
 
 <body>
 
-    <h3 style="background-color: #48d1CC; color: white;">
+    <h3 style=" color: black;">
         FitPlan
         <a href="Home.html"
-            style="color: white; display: inline-block; text-align: right; padding-left: 1100px;">Home</a>
+            style="color: black; display: inline-block; text-align: right; padding-left: 1100px;">Home</a>
         <a href="About.html"
-            style="color: white; display: inline-block; text-align: right; padding-left: 20px;">About</a>
+            style="color: black; display: inline-block; text-align: right; padding-left: 20px;">About</a>
         <a href="Services.html"
-            style="color: white; display: inline-block; text-align: right; padding-left: 20px;">Services</a>
+            style="color: black; display: inline-block; text-align: right; padding-left: 20px;">Services</a>
         <a href="Contact.html"
-            style="color: white; display: inline-block; text-align: right; padding-left: 20px;">Contact</a>
+            style="color: black; display: inline-block; text-align: right; padding-left: 20px;">Contact</a>
     </h3>
+    <section style="background-color:#f4f4f4; padding:40px; margin-top:40px;">
+
+        <h2 style="text-align:center;">Personal Plan Builder</h2>
+        <p style="text-align:center;">
+            Create a personalized fitness and nutrition plan based on your lifestyle and goals.
+        </p>
+
+        <div style="
+    max-width:700px;
+    margin:30px auto;
+    background-color:white;
+    padding:30px;
+    border-radius:8px;
+  ">
+
+            <form>
+                <label><b>Age</b></label>
+                <input type="number" placeholder="Enter your age"
+                    style="width:100%; padding:10px; margin-top:5px; margin-bottom:15px;">
+
+                <label><b>Gender</b></label>
+                <select style="width:100%; padding:10px; margin-bottom:15px;">
+                    <option>Select</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+
+                <label><b>Primary Goal</b></label>
+                <select style="width:100%; padding:10px; margin-bottom:15px;">
+                    <option>Select</option>
+                    <option>Weight Loss</option>
+                    <option>Muscle Building</option>
+                    <option>Overall Wellness</option>
+                </select>
+
+                <label><b>Activity Level</b></label>
+                <select style="width:100%; padding:10px; margin-bottom:15px;">
+                    <option>Select</option>
+                    <option>Beginner</option>
+                    <option>Intermediate</option>
+                    <option>Advanced</option>
+                </select>
+
+                <label><b>Diet Preference</b></label>
+                <select style="width:100%; padding:10px; margin-bottom:20px;">
+                    <option>No preference</option>
+                    <option>Vegetarian</option>
+                    <option>Vegan</option>
+                    <option>Low Carb</option>
+                    <option>High Protein</option>
+                </select>
+
+                <button type="submit" style="
+          width:100%;
+          padding:12px;
+          background-color:#48d1CC;
+          color:white;
+          border:none;
+          font-size:16px;
+          cursor:pointer;
+        ">
+                    Generate My Plan
+                </button>
+            </form>
+
+        </div>
+    </section>
+    <br><br><br><br>
+    <section style="background-color: #9B9492; padding: 10px; margin-top: 100px;">
+        <h3 style="margin: 0; display: inline-block; color: white;">
+            FitPlan
+        </h3>
+        <div style=" float: right;">
+            <a href="Home.html" style="color: white; text-decoration: none; margin-left: 20px;">Home</a>
+            <a href="About.html" style="color: white; text-decoration: none; margin-left: 20px;">About</a>
+            <a href="Services.html" style="color: white; text-decoration: none; margin-left: 20px;">Services</a>
+            <a href="Contact.html" style="color: white; text-decoration: none; margin-left: 20px;">Contact</a>
+        </div>
+        <p style="color: white;">Your plan to a healthier you</p>
+        <div
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white;">
+            <h3>Subscribe to our newsletter!</h3>
+            <form method="post">
+                <input id="myInput" name="email" value="Your E-mail" style="text-align: center; margin-bottom: 10px;">
+                <button type="submit" name="subscribe">Subscribe</button>
+            </form>
+        </div>
+
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            .fa {
+                padding: 20px;
+                font-size: 30px;
+                width: 70px;
+                text-align: center;
+                text-decoration: none;
+                margin: 5px 2px;
+            }
+
+            .fa:hover {
+                opacity: 0.7;
+            }
+
+            .fa-facebook {
+                background: #3B5998;
+                color: white;
+            }
+
+            .fa-twitter {
+                background: #55ACEE;
+                color: white;
+            }
+
+            .fa-pinterest {
+                background: #ff4500;
+                color: white;
+            }
+        </style>
+
+        <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+        <a href="https://x.com/?lang=en" class="fa fa-twitter"></a>
+        <a href="https://www.pinterest.com/" class="fa fa-pinterest"></a>
+
+    </section>
+
+
 </body>
 
 </html>
