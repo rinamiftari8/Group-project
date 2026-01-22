@@ -1,7 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+ 
+ 
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FirPlan</title>
@@ -88,6 +92,68 @@
             margin-left: 20px;
             text-decoration: none;
         }
+    
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f8f8f8;
+      margin: 0;
+      padding: 40px;
+    }
+
+    .services {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .card {
+      background: #fff;
+      width: 320px;
+      text-align: center;
+      padding-bottom: 25px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin: 20px 0 10px;
+      font-size: 20px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #777;
+      padding: 0 20px;
+      line-height: 1.5;
+      font-family: Georgia, 'Times New Roman', Times, serif
+    }
+
+    .card button {
+      margin-top: 15px;
+      padding: 10px 25px;
+      background: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      letter-spacing: 1px;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .card button:hover {
+      background: #333;
+    }
+
+
     </style>
 </head>
 
@@ -104,6 +170,46 @@
         <a href="Contact.html"
             style="color: black; display: inline-block; text-align: right; padding-left: 20px;">Contact</a>
     </h3>
+
+    
+
+ 
+
+  <section class="services">
+
+    <div class="card">
+      <img src="nutrition coaching.jpg" alt="Nutrition Coaching">
+      <h3>Nutrition Coaching</h3>
+      <p>
+        Nutrition is essential for maintaining health and energy.
+      </p>
+      <button>LEARN MORE</button>
+    </div>
+
+    <div class="card">
+      <img src="fitness coach.jpg" alt="Fitness Training">
+      <h3>Fitness Training</h3>
+      <p>
+        Fitness helps improve strength,energy and overall health through regular exercise.
+      </p>
+      <button>LEARN MORE</button>
+    </div>
+
+    <div class="card">
+      <img src="yoga.jpg" alt="Virtual Classes">
+      <h3>Yoga</h3>
+      <p>
+        Yoga improves flexibility,reduces stress and promotes well-being.
+      </p>
+      <button>LEARN MORE</button>
+    </div>
+
+  </section>
+ 
+
+
+
+
     <section class="pricing-section">
         <h1 class="pricing-title">Our Pricing Plan</h1>
         <p class="pricing-subtitle">Choose the plan that matches your goals</p>
@@ -112,7 +218,7 @@
 
             <div class="pricing-box">
                 <h3>Basic</h3>
-                <p class="price">$50 / month</p>
+                <p class="price">50€ / month</p>
                 <ul>
                     <li>6 days a Week</li>
                     <li>Dedicated trainer Alocated</li>
@@ -123,7 +229,7 @@
 
             <div class="pricing-box" style="background-color:#C7C3C2;">
                 <h3>Standard</h3>
-                <p class="price">$75 / month</p>
+                <p class="price">75€ / month</p>
                 <ul>
                     <li>All Basic Features</li>
                     <li>Personalized Meal Plan</li>
@@ -135,7 +241,7 @@
 
             <div class="pricing-box" style="background-color:#9B9492;">
                 <h3>Premium</h3>
-                <p class="price">$125 / month</p>
+                <p class="price">125€ / month</p>
                 <ul>
                     <li>All Standard Features</li>
                     <li>1-on-1 Coaching</li>
@@ -212,3 +318,4 @@
 </body>
 
 </html>
+
