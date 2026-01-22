@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FirPlan</title>
+    <title>FitPlan</title>
     <style>
         body {
             font-family: Garamond, serif;
@@ -14,19 +14,35 @@
 
 <body>
 
-    <h3 style=" color: black;">
-        FitPlan
-        <a href="Home.html"
-            style="color: black; display: inline-block; text-align: right; padding-left: 1100px;">Home</a>
-        <a href="About.html"
-            style="color: black; display: inline-block; text-align: right; padding-left: 20px;">About</a>
-        <a href="Services.html"
-            style="color: black; display: inline-block; text-align: right; padding-left: 20px;">Services</a>
-        <a href="Contact.html"
-            style="color: black; display: inline-block; text-align: right; padding-left: 20px;">Contact</a>
-    </h3>
+  
 
     <style>
+        .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h3 {
+    margin: 0;
+}
+
+.header a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .header a {
+        margin-left: 0;
+    }
+}
         .image-with-text {
             position: relative;
             background: url('fitplan3.png') no-repeat center/cover;
@@ -41,9 +57,21 @@
         }
     </style>
 
+    <div class="header">
+  <h3>FitPlan</h3>
+  <div>
+    <a href="Home.html">Home</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a href="Contact.html">Contact</a>
+  </div>
+</div>
+
+
     <div class="image-with-text">
         <h4>FitPlan: Your Guide to Diets, Fitness, and Nutrition</h4>
     </div>
+
 
 
 
