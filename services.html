@@ -15,6 +15,35 @@
 
         }
 
+        .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.header h3 {
+    margin: 0;
+}
+
+.header a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .header a {
+        margin-left: 0;
+    }
+}
+</style>
+<style>
         .pricing-section {
             text-align: center;
             padding: 50px 20px;
@@ -95,13 +124,6 @@
     
     * {
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: #f8f8f8;
-      margin: 0;
-      padding: 40px;
     }
 
     .services {
@@ -153,27 +175,20 @@
       background: #333;
     }
 
-
     </style>
 </head>
 
 <body>
 
-    <h3 style=" color: black;">
-        FitPlan
-        <a href="Home.html"
-            style="color: black; display: inline-block; text-align: right; padding-left: 1100px;">Home</a>
-        <a href="About.html"
-            style="color: black; display: inline-block; text-align: right; padding-left: 20px;">About</a>
-        <a href="Services.html"
-            style="color: black; display: inline-block; text-align: right; padding-left: 20px;">Services</a>
-        <a href="Contact.html"
-            style="color: black; display: inline-block; text-align: right; padding-left: 20px;">Contact</a>
-    </h3>
-
-    
-
- 
+      <div class="header">
+  <h3>FitPlan</h3>
+  <div>
+    <a href="Home.html">Home</a>
+    <a href="About.html">About</a>
+    <a href="Services.html">Services</a>
+    <a href="Contact.html">Contact</a>
+  </div>
+</div>
 
   <section class="services">
 
