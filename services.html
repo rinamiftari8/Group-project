@@ -9,9 +9,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FirPlan</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: Garamond, serif;
+            body { font-family: Garamond, serif; margin:0; padding:0; background:#f0f0f0; }
+* { box-sizing: border-box; } 
 
         }
 
@@ -25,7 +28,7 @@
 .header h3 {
     margin: 0;
 }
-
+header h3 { margin:0; }
 .header a {
     margin-left: 20px;
     text-decoration: none;
@@ -42,6 +45,17 @@
         margin-left: 0;
     }
 }
+.services {
+ display:flex; gap:30px; justify-content:center; flex-wrap:wrap; padding:0 20px;
+}
+.services .card {
+ background:#fff; width:320px; text-align:center; padding-bottom:25px; box-shadow:0 8px 20px rgba(0,0,0,0.08);
+ margin-bottom:30px; border-radius:10px;
+}
+.services .card img { width:100%; height:220px; object-fit:cover; border-radius:10px 10px 0 0; }
+.services .card h3 { margin:20px 0 10px; font-size:20px; }
+.services .card p { font-size:14px; color:#777; padding:0 20px; line-height:1.5; }
+
 </style>
 <style>
         .pricing-section {
@@ -158,8 +172,69 @@
       line-height: 1.5;
       font-family: Georgia, 'Times New Roman', Times, serif
     }
+:root{
+ --bg:#e9e9e9;
+ --card:#f5f5f5;
+ --box:#ededed;
+ --text:#555;
+ --accent:#9b9b9b;
+ --primary:#ff7a18;
+ --secondary:#af002d;
+ --success:#28a745;
+}
+.dark{
+ --bg:#111;
+ --card:#1a1a1a;
+ --box:#222;
+ --text:#eee;
+ --accent:#aaa;
+ --primary:#ff7a18;
+ --secondary:#af002d;
+ --success:#28a745;
+}
+.dashboard-section {
+ display:flex; justify-content:center; padding:50px 20px; background:var(--bg);
+}
+.app {
+ max-width:600px; width:100%; background:var(--card); border-radius:30px; padding:25px; box-shadow:0 10px 30px rgba(0,0,0,0.15); color:var(--text); position:relative; overflow:hidden;
+}
+.app h2{text-align:center;margin-bottom:10px;}
+.toggle{ position:absolute; right:20px; top:20px; background:var(--box); border:none; border-radius:20px; padding:6px 12px; cursor:pointer; }
+svg{display:block;margin:auto; transition:0.3s;}
+.bg{stroke:#ddd;stroke-width:12;fill:none;}
+.progress{ stroke:var(--accent); stroke-width:12; fill:none; stroke-dasharray:439; stroke-dashoffset:439; transition:0.5s,stroke 0.5s; }
+.percent{ fill:var(--text); font-size:22px; text-anchor:middle; dominant-baseline:middle; transition:0.3s; }
 
 
+.cards {
+ display:flex; justify-content:space-between; margin-top:20px; gap:10px; flex-wrap:wrap;
+}
+.cards .card {
+ background:var(--box); border-radius:15px; padding:12px; text-align:center; flex:1; min-width:90px; 
+ transition:0.3s;
+}
+.cards .card button{
+ width:100%; border:none; background:linear-gradient(90deg,var(--primary),var(--secondary)); color:white; font-weight:bold; padding:6px; border-radius:10px; cursor:pointer; transition:0.3s;
+}
+.cards .card button:hover{opacity:0.85;}
+
+canvas{ background:var(--box); border-radius:15px; margin-top:25px; padding:10px; width:100%;}
+.day{text-align:center;font-weight:bold;margin:10px 0;font-size:18px;}
+.tip{ background:var(--box); padding:15px; border-radius:15px; text-align:center; margin-top:20px;}
+.tip button{ margin-top:8px; border:none; background:linear-gradient(90deg,var(--primary),var(--secondary)); color:white; padding:6px 12px; border-radius:15px; cursor:pointer; transition:0.3s; }
+.tip button:hover{opacity:0.85;}
+.dark .card { background:#333; color:#eee;}
+.dark canvas { background:#222;}
+.dark .tip { background:#222; color:#eee;}
+
+
+footer { background-color:#55504E; padding:20px; color:white; margin-top:60px;}
+footer a { color:white; margin-left:20px; text-decoration:none; }
+.fa { padding:20px; font-size:30px; width:70px; text-align:center; text-decoration:none; margin:5px 2px; }
+.fa:hover{ opacity:0.7; }
+.fa-facebook{ background:#3B5998; color:white;}
+.fa-twitter{ background:#55ACEE; color:white;}
+.fa-pinterest{ background:#ff4500; color:white;}
     </style>
 </head>
 
@@ -212,7 +287,40 @@
 
   </section>
  
-
+<section class="dashboard-section">
+ <div class="app" id="app">
+   <button class="toggle" onclick="toggle()">🌙 / ☀</button>
+   <h2>FitPlan Dashboard</h2>
+   <div class="day" id="dayName"></div>
+   <svg width="160" height="160">
+     <circle class="bg" cx="80" cy="80" r="70"/>
+     <circle id="ring" class="progress" cx="80" cy="80" r="70"/>
+     <text id="percent" class="percent" x="80" y="80">0%</text>
+   </svg>
+   <div class="cards">
+     <div class="card">
+       <p>Steps</p>
+       <h3 id="steps">0</h3>
+       <button onclick="add('steps',1000)">+1000</button>
+     </div>
+     <div class="card">
+       <p>Water</p>
+       <h3 id="water">0</h3>
+       <button onclick="add('water',1)">+1</button>
+     </div>
+     <div class="card">
+       <p>Calories</p>
+       <h3 id="calories">0</h3>
+       <button onclick="add('calories',300)">+300</button>
+     </div>
+   </div>
+   <canvas id="chart" height="200"></canvas>
+   <div class="tip">
+     <p id="tipText"></p>
+     <button onclick="newTip()">New Tip</button>
+   </div>
+ </div>
+</section>
 
 
 
@@ -319,7 +427,87 @@
         <a href="https://www.pinterest.com/" class="fa fa-pinterest"></a>
 
     </section>
+<script>
+const days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+let dayIndex=new Date().getDay();
+let week=JSON.parse(localStorage.getItem("weekData")) || Array(7).fill().map(()=>({steps:0,water:0,calories:0}));
 
+const steps=document.getElementById("steps");
+const water=document.getElementById("water");
+const calories=document.getElementById("calories");
+const ring=document.getElementById("ring");
+const percent=document.getElementById("percent");
+const dayName=document.getElementById("dayName");
+const tipText=document.getElementById("tipText");
+
+const radius=ring.r.baseVal.value;
+const circumference=2*Math.PI*radius;
+ring.style.strokeDasharray=circumference;
+
+const chart=new Chart(document.getElementById("chart"),{
+ type:"bar",
+ data:{
+  labels:days,
+  datasets:[
+   {label:"Steps",data:week.map(d=>d.steps),backgroundColor:"#9b9b9b"},
+   {label:"Water",data:week.map(d=>d.water),backgroundColor:"#bdbdbd"},
+   {label:"Calories",data:week.map(d=>d.calories),backgroundColor:"#777"}
+  ]
+ },
+ options:{scales:{y:{beginAtZero:true}}}
+});
+
+function render(){
+ let d=week[dayIndex];
+ steps.innerText=d.steps;
+ water.innerText=d.water;
+ calories.innerText=d.calories;
+ dayName.innerText=days[dayIndex];
+
+ let p=Math.min(d.steps/10000*100,100);
+ ring.style.strokeDashoffset=circumference - (circumference*p/100);
+ ring.style.stroke = p>=100 ? "var(--success)" : "var(--accent)";
+ percent.innerText=Math.round(p)+"%";
+
+ chart.data.datasets.forEach((ds,i)=>ds.data=week.map(d=>Object.values(d)[i]));
+ chart.update();
+ localStorage.setItem("weekData",JSON.stringify(week));
+}
+
+function add(type,val){
+ week[dayIndex][type]+=val;
+ render();
+ if(type==='steps' && week[dayIndex][type]>=10000){
+  alert("🎉 Congrats! You reached your steps target!");
+ }
+}
+
+function newTip(){ 
+ tipText.innerText=["Drink water regularly 💧","Walk 20 min 🚶","Stretch 🧘","Eat healthy 🥗","Take breaks 🛑","Sleep 7-8h 😴"][Math.floor(Math.random()*6)]; 
+}
+
+function toggle(){ document.body.classList.toggle("dark"); }
+
+let startX=0;
+document.addEventListener("touchstart",e=>startX=e.touches[0].clientX);
+document.addEventListener("touchend",e=>{
+ let dx=e.changedTouches[0].clientX-startX;
+ if(dx>50) dayIndex=(dayIndex+6)%7;
+ if(dx<-50) dayIndex=(dayIndex+1)%7;
+ render();
+});
+
+setInterval(()=>{
+ dayIndex=(dayIndex+1)%7;
+ week[dayIndex].steps += Math.floor(Math.random()*500);  
+ week[dayIndex].water += Math.random()<0.5?1:0;          
+ week[dayIndex].calories += Math.floor(Math.random()*200); 
+ render();
+},5000); 
+
+render();
+newTip();
+</script>
 
 </body>
 
