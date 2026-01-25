@@ -1,3 +1,42 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$conn = new mysqli("localhost", "root", "", "fitplan_db");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$message = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = trim($_POST['username']);
+    $password = trim($_POST['password']);
+
+    if ($name !== "" && $password !== "") {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $email = $name;
+
+        $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
+        if (!$stmt) { die("Prepare failed: " . $conn->error); }
+
+        $stmt->bind_param("sss", $name, $email, $hashedPassword);
+
+        if ($stmt->execute()) {
+            $message = "Sign Up Successful!";
+        } else {
+            $message = "Error: " . $stmt->error;
+        }
+
+        $stmt->close();
+    } else {
+        $message = "Please fill in both fields.";
+    }
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,41 +114,25 @@
     </style>
 </head>
 <body>
+<div class="login-container">
+<h2>Sign Up</h2>
 
-    <div class="login-container">
-        <h2>Sign Up</h2>
-
-        <form id="loginForm" action="#" method="POST" onsubmit="handleLogin(event)">
-            <label for="username">Username or E-mail</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username or email" required>
-
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
-
-            <input type="submit" value="Sign Up">
-        </form>
-
-       
+<?php if ($message != ""): ?>
+    <div class="<?php echo strpos($message,'Error')===0?'error':'message'; ?>">
+        <?php echo $message; ?>
     </div>
+<?php endif; ?>
 
-    <script>
-        function handleLogin(event) {
-            event.preventDefault(); 
+<form method="POST">
+    <label>Username or Email</label>
+    <input type="text" name="username" required>
 
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+    <label>Password</label>
+    <input type="password" name="password" required>
 
-
-            if (username && password) {
-                
-                alert('Sign Up Successful!\nUsername: ' + username);
-                window.location.href = "home.html"; 
-            } else {
-                alert('Please fill in both fields.');
-            }
-        }
-    </script>
+    <input type="submit" value="Sign Up">
+</form>
+</div>
 
 </body>
 </html>
-
